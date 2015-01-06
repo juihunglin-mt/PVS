@@ -13,7 +13,7 @@
             </generator>
         </id>
         <property name="bbgFile" type="java.lang.String">
-            <column name="BBG_FILE" length="50" not-null="true" />
+            <column name="BBG_FILE" length="50" />
         </property>
         <property name="edmStatus" type="java.lang.Integer">
             <column name="EDM_STATUS" precision="5" scale="0" not-null="true" />
@@ -31,7 +31,7 @@
             <column name="UPDATE_DATE" />
         </property>
         <property name="edmFile" type="java.lang.String">
-            <column name="EDM_FILE" length="50" not-null="true" />
+            <column name="EDM_FILE" length="50" />
         </property>
         <property name="reportName" type="java.lang.String">
             <column name="REPORT_NAME" length="50" not-null="true" />
