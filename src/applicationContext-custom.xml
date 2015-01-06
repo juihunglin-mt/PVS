@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    
+    <bean id="IndexAction" class="com.tr.pvs.core.action.IndexAction" scope="prototype" ></bean>
+    
+    <bean id="ReportAction" class="com.tr.pvs.core.action.ReportAction" scope="prototype">
+    	<property name="reportDAO">
+    		<ref bean="ReportDAO" />
+    	</property>
+    	<property name="bbgReader">
+    		<ref bean="BBGReader" />
+    	</property>
+    	<property name="edmReader">
+    		<ref bean="EDMReader" />
+    	</property>
+    	<property name="reportGenerator">
+    		<ref bean="ReportGenerator" />
+    	</property>
+    </bean>
+    
+    <bean id="BBGReader" class="com.tr.pvs.core.bean.BBGReader">
+    	<property name="instrumentDAO">
+    		<ref bean="InstrumentDAO" />
+    	</property>
+    	<property name="bbgPriceDAO">
+    		<ref bean="BBGPriceDAO" />
+    	</property>
+    </bean>
+    
+    <bean id="EDMReader" class="com.tr.pvs.core.bean.EDMReader">
+    	<property name="instrumentDAO">
+    		<ref bean="InstrumentDAO" />
+    	</property>
+    	<property name="edmPriceDAO">
+    		<ref bean="EDMPriceDAO" />
+    	</property>
+    </bean>
+    
+    <bean id="ReportGenerator" class="com.tr.pvs.core.bean.ReportGenerator" >
+    	<property name="instrumentDAO">
+    		<ref bean="InstrumentDAO" />
+    	</property>
+    	<property name="edmPriceDAO">
+    		<ref bean="EDMPriceDAO" />
+    	</property>
+    	<property name="bbgPriceDAO">
+    		<ref bean="BBGPriceDAO" />
+    	</property>
+    	<property name="reportDAO">
+    		<ref bean="ReportDAO" />
+    	</property>
+    	<property name="bbgReader">
+    		<ref bean="BBGReader" />
+    	</property>
+    	<property name="edmReader">
+    		<ref bean="EDMReader" />
+    	</property>
+    </bean>
+</beans>

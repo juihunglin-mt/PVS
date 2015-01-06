@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PVS"
+  id="myeclipse.1417743004765"
+  context-root="/PVS"
+  j2ee-spec="6.0"
+  archive="PVS.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    
+    <!-- Calculate Volatility Schedule -->
+    
+    <bean name="jobGenerateReport" class="org.springframework.scheduling.quartz.JobDetailFactoryBean" >
+		<property name="durability" value="true"></property> 
+		<property name="jobClass" value="com.tr.pvs.core.scheduler.GenerateSchedule" />
+		<property name="jobDataAsMap">
+		  <map>
+			<entry key="reportGenerator" value-ref="ReportGenerator" />
+		  </map>
+		</property>
+	</bean>
+	
+	<bean id="triggerGenerateReport" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" >
+ 		<property name="jobDetail" ref="jobGenerateReport" />
+		<property name="cronExpression" value="* 0/1 * * * ?" />
+	</bean>
+	
+	<!-- Trigger schedule -->
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="triggerGenerateReport" />
+			</list>
+		</property>
+	</bean>
+     
+   
+   </beans>
