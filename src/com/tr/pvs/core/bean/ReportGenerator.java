@@ -54,7 +54,9 @@ public class ReportGenerator {
 		reportDAO.attachDirty(report);
 		
 		try {
-			//bbgReader.startBBGReader(report.getBbgFile());
+			if(report.getBbgFile() != null) {
+				bbgReader.startBBGReader(report.getBbgFile());
+			}
 			report.setBbgStatus(1);
 			reportDAO.attachDirty(report);
 		} catch(Exception e) {
@@ -64,7 +66,9 @@ public class ReportGenerator {
 		}
 		
 		try {
-			edmReader.startEDMReader(report.getEdmFile());
+			if(report.getEdmFile() != null) {
+				edmReader.startEDMReader(report.getEdmFile());
+			}
 			report.setEdmStatus(1);
 			reportDAO.attachDirty(report);
 		} catch(Exception e) {
@@ -185,7 +189,7 @@ public class ReportGenerator {
 							
 							int key = x + 1;
 							
-							if(edmValue != null && key < edmList.size()) {
+							/*if(edmValue != null && key < edmList.size()) {
 								boolean checkValue = true;
 								while(checkValue) {
 									EDMPrice price2 = edmList.get(key);
@@ -201,7 +205,7 @@ public class ReportGenerator {
 										key++;
 									}
 								}
-							}
+							}*/
 							
 							values[0] = edmValue;
 							values[4] = edmRatio;
@@ -216,13 +220,13 @@ public class ReportGenerator {
 									bbgValue = Double.valueOf(bbgPrice.getValue());
 									values[1] = bbgValue;
 									
-									BBGPrice bbgPrice2 = dateMap.get(tmpTradeDate);
+									/*BBGPrice bbgPrice2 = dateMap.get(tmpTradeDate);
 									
 									if(bbgPrice2 != null && bbgPrice2.getValue() != null) {
 										Double bbgValue2 = Double.valueOf(bbgPrice2.getValue());
 										bbgRatio = (bbgValue - bbgValue2) / bbgValue2;
 										values[5] = bbgRatio;
-									}
+									}*/
 									if(edmValue != null && bbgValue != null) {
 										Double sum = edmValue - bbgValue;
 										Double percent = Math.abs(sum) / bbgValue * 100;
@@ -244,7 +248,7 @@ public class ReportGenerator {
 											}
 										}
 									} 
-									if(edmRatio != null && bbgRatio != null) {
+									/*if(edmRatio != null && bbgRatio != null) {
 										Double ratio = ((Math.abs(edmRatio) - Math.abs(bbgRatio)) / Math.abs(bbgRatio)) * 100;
 										
 										if(Math.abs(ratio) >= diffRatio) {	
@@ -263,7 +267,7 @@ public class ReportGenerator {
 												diffRatioMap.put(identifier, strTrade+","+(countNum+1));
 											}
 										}
-									}
+									}*/
 								}
 							}
 							

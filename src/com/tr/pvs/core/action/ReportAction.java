@@ -91,19 +91,31 @@ public class ReportAction extends ActionSupport {
 		
 		String time = tu.getDateFormat(new Date(), "_yyyyMMddHHmmss");
 		
-		String uploadBBG = bbgFileName.substring(0, bbgFileName.lastIndexOf(".")) + time + bbgFileName.substring(bbgFileName.lastIndexOf("."), bbgFileName.length());
-		String uploadEDM = edmFileName.substring(0, edmFileName.lastIndexOf(".")) + time + edmFileName.substring(edmFileName.lastIndexOf("."), edmFileName.length());
+		String uploadBBG = null;
+		String uploadEDM = null;
 		
+		if(bbgFile != null) {
+			uploadBBG = bbgFileName.substring(0, bbgFileName.lastIndexOf(".")) + time + bbgFileName.substring(bbgFileName.lastIndexOf("."), bbgFileName.length());
+			File file = new File(bbg_path, uploadBBG);
+			try {
+				FileUtils.copyFile(bbgFile, file);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				log.error("!!! Failed", e);
+				return INPUT;
+			}
+		}
 		
-		File file = new File(bbg_path, uploadBBG);
-		File file2 = new File(edm_path, uploadEDM);
-		try {
-			FileUtils.copyFile(bbgFile, file);
-			FileUtils.copyFile(edmFile, file2);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			log.error("!!! Failed", e);
-			return INPUT;
+		if(edmFile != null) {
+			uploadEDM = edmFileName.substring(0, edmFileName.lastIndexOf(".")) + time + edmFileName.substring(edmFileName.lastIndexOf("."), edmFileName.length());
+			File file2 = new File(edm_path, uploadEDM);
+			try {
+				FileUtils.copyFile(edmFile, file2);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				log.error("!!! Failed", e);
+				return INPUT;
+			}
 		}
 		
 		Report report = new Report();
