@@ -133,7 +133,7 @@ public class ReportAction extends ActionSupport {
 		if(maxCount == null) maxCount = 0;
 		report.setMaxCount(maxCount);
 		
-		report.setReportName("report_" + uploadBBG);
+		report.setReportName("report" + time + ".xls");
 		
 		report.setInsertDate(new Timestamp(System.currentTimeMillis()));
 		report.setUpdateDate(new Timestamp(System.currentTimeMillis()));
