@@ -14,20 +14,20 @@
 				</tr>
 				<tr>
 					<td>Different Percent >= </td>
-					<td><s:textfield name="diffPct" theme="simple"/> % (Default 1 %)</td>
-				<tr>
+					<td><s:textfield name="diffPct"/> % (Default 1 %)</td>
+				</tr>
 				<tr>
 					<td>Different Value >= </td>
-					<td><s:textfield name="diffValue" theme="simple"/> (Default 0.01)</td>
-				<tr>
+					<td><s:textfield name="diffValue"/> (Default 0.01)</td>
+				</tr>
 				<tr>
 					<td>Different Ratio >= </td>
-					<td><s:textfield name="diffRatio" theme="simple"/> % (Default 0.01 %)</td>
-				<tr>
+					<td><s:textfield name="diffRatio"/> % (Default 0.01 %)</td>
+				</tr>
 				<tr>
 					<td>Total Check Days </td>
-					<td><s:textfield name="maxCount" theme="simple"/> Days (Default 0 is all)</td>
-				<tr>
+					<td><s:textfield name="maxCount"/> Days (Default 0 is all)</td>
+				</tr>
 	  		    <tr>
 					<td>BBG File</td>
 					<td><s:file name="bbgFile" label="Select BBG File"/></td>
