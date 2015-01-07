@@ -53,9 +53,17 @@ public class ReportGenerator {
 		report.setReportStatus(1);
 		reportDAO.attachDirty(report);
 		
+		Edmenv edmenv = new Edmenv();
+		
+		ResourceBundle rb = ResourceBundle.getBundle("pvs_" + edmenv.getEnvironment());
+		String bbg_path = rb.getString("bbg_path");
+		String edm_path = rb.getString("edm_path");
+		
 		try {
 			if(report.getBbgFile() != null) {
 				bbgReader.startBBGReader(report.getBbgFile());
+				File file1 = new File(bbg_path + File.separator + report.getBbgFile());
+				if(file1 != null) file1.delete();
 			}
 			report.setBbgStatus(1);
 			reportDAO.attachDirty(report);
@@ -68,6 +76,8 @@ public class ReportGenerator {
 		try {
 			if(report.getEdmFile() != null) {
 				edmReader.startEDMReader(report.getEdmFile());
+				File file1 = new File(edm_path + File.separator + report.getEdmFile());
+				if(file1 != null) file1.delete();
 			}
 			report.setEdmStatus(1);
 			reportDAO.attachDirty(report);

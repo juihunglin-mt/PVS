@@ -148,17 +148,11 @@ public class ReportAction extends ActionSupport {
 		
 		try {
 			ResourceBundle rb = ResourceBundle.getBundle("pvs_" + edmenv.getEnvironment());
-			String bbg_path = rb.getString("bbg_path");
-			String edm_path = rb.getString("edm_path");
+			//String bbg_path = rb.getString("bbg_path");
+			//String edm_path = rb.getString("edm_path");
 			String report_path = rb.getString("report_path");
 			
 			Report report = reportDAO.findById(reportId);
-			
-			File file1 = new File(bbg_path + File.separator + report.getBbgFile());
-			if(file1 != null) file1.delete();
-			
-			File file2 = new File(edm_path + File.separator + report.getEdmFile());
-			if(file2 != null) file2.delete();
 			
 			File file3 = new File(report_path + File.separator + report.getReportName());
 			if(file3 != null) file3.delete();
